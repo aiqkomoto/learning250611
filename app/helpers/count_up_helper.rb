@@ -1,0 +1,2 @@
+module CountUpHelper
+end
