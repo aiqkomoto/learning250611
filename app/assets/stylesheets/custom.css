@@ -1,0 +1,19 @@
+.roshambo-btn[data-choice="グー"] {
+  background-image: url('/assets/rock.png');
+}
+.roshambo-btn[data-choice="チョキ"] {
+  background-image: url('/assets/scissors.png');
+}
+.roshambo-btn[data-choice="パー"] {
+  background-image: url('/assets/paper.png');
+}
+
+.roshambo-btn {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+}

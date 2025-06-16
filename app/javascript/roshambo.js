@@ -1,31 +1,29 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const buttons = document.querySelectorAll("#buttons button");
-  const resultDiv = document.getElementById("result");
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll("#roshambo-buttons button");
+  const result = document.getElementById("result");
 
-  buttons.forEach((button) => {
+  const choices = ["グー", "チョキ", "パー"];
+
+  buttons.forEach(button => {
     button.addEventListener("click", () => {
-      const playerHand = button.dataset.hand;
-      const hands = ["グー", "チョキ", "パー"];
-      const computerHand = hands[Math.floor(Math.random() * 3)];
+      const userChoice = button.dataset.choice;
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
 
-      let result;
-      if (playerHand === computerHand) {
-        result = "あいこです";
+      let outcome = "";
+
+      if (userChoice === computerChoice) {
+        outcome = "あいこ！";
       } else if (
-        (playerHand === "グー" && computerHand === "チョキ") ||
-        (playerHand === "チョキ" && computerHand === "パー") ||
-        (playerHand === "パー" && computerHand === "グー")
+        (userChoice === "グー" && computerChoice === "チョキ") ||
+        (userChoice === "チョキ" && computerChoice === "パー") ||
+        (userChoice === "パー" && computerChoice === "グー")
       ) {
-        result = "あなたの勝ちです！";
+        outcome = "あなたの勝ち！";
       } else {
-        result = "あなたの負けです...";
+        outcome = "あなたの負け！";
       }
 
-      resultDiv.innerHTML = `
-        <p>あなた：${playerHand}</p>
-        <p>コンピュータ：${computerHand}</p>
-        <h2>${result}</h2>
-      `;
+      result.textContent = `あなた：${userChoice} / コンピューター：${computerChoice} → ${outcome}`;
     });
   });
 });
