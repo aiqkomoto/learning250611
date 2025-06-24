@@ -8,9 +8,15 @@
     <h1>じゃんけん</h1>
 
     <div id="roshambo-buttons">
-        <button class="roshambo-btn" data-choice="グー">グー</button>
-        <button class="roshambo-btn" data-choice="チョキ">チョキ</button>
-        <button class="roshambo-btn" data-choice="パー">パー</button>
+        <button class="roshambo-btn" data-choice="グー">
+            <%= image_tag "rock.png", alt: "グー" %>
+        </button>
+        <button class="roshambo-btn" data-choice="チョキ">
+            <%= image_tag "scissors.png", alt: "チョキ" %>
+        </button>
+        <button class="roshambo-btn" data-choice="パー">
+            <%= image_tag "paper.png", alt: "パー" %>
+        </button>
     </div>
 
     <div id="result" style="margin-top: 20px;"></div>
