@@ -9,17 +9,19 @@
 
     <div id="roshambo-buttons">
         <button class="roshambo-btn" data-choice="グー">
-            <%= image_tag "rock.png", alt: "グー" %>
+            <%= image_tag "roshambo_rock.png", alt: "グー" %>
         </button>
         <button class="roshambo-btn" data-choice="チョキ">
-            <%= image_tag "scissors.png", alt: "チョキ" %>
+            <%= image_tag "roshambo_scissors.png", alt: "チョキ" %>
         </button>
         <button class="roshambo-btn" data-choice="パー">
-            <%= image_tag "paper.png", alt: "パー" %>
+            <%= image_tag "roshambo_paper.png", alt: "パー" %>
         </button>
     </div>
 
     <div id="result" style="margin-top: 20px;"></div>
+    <div id="streakDisplay"></div>
+    <div id="maxStreakDisplay" style="margin-top: 20px;"></div>
 
 </body>
 </html>
