@@ -4,13 +4,31 @@
 
 <h1>楽曲情報</h1>
 
-<div id="musics">
-  <% @musics.each do |music| %>
-    <%= render music %>
-    <p>
-      <%= link_to "Show this music", music %>
-    </p>
-  <% end %>
-</div>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Performer</th>
+      <th>Lyricist</th>
+      <th>Composer</th>
+      <th>Arranger</th>
+      <th>Length</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @musics.each do |music| %>
+      <tr id="<%= dom_id(music) %>">
+        <td><%= music.name %></td>
+        <td><%= music.performer %></td>
+        <td><%= music.lyricist %></td>
+        <td><%= music.composer %></td>
+        <td><%= music.arranger %></td>
+        <td><%= music.length %></td>
+        <td><%= link_to "Show", music %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to "New music", new_music_path %>
