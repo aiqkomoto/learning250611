@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Musics" %>
+
+<h1>楽曲情報</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Performer</th>
+      <th>Lyricist</th>
+      <th>Composer</th>
+      <th>Arranger</th>
+      <th>Length</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @musics.each do |music| %>
+      <tr id="<%= dom_id(music) %>">
+        <td><%= music.name %></td>
+        <td><%= music.performer %></td>
+        <td><%= music.lyricist %></td>
+        <td><%= music.composer %></td>
+        <td><%= music.arranger %></td>
+        <td><%= music.length %></td>
+        <td><%= link_to "Show", music %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New music", new_music_path %>
