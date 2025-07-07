@@ -1,0 +1,34 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Musics" %>
+
+<h1><%= t('views.musics.index.title') %></h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th><%= Music.human_attribute_name(:name) %></th>
+      <th><%= Music.human_attribute_name(:performer) %></th>
+      <th><%= Music.human_attribute_name(:lyricist) %></th>
+      <th><%= Music.human_attribute_name(:composer) %></th>
+      <th><%= Music.human_attribute_name(:arranger) %></th>
+      <th><%= Music.human_attribute_name(:length) %></th>
+      <th><%= Music.human_attribute_name(:details) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @musics.each do |music| %>
+      <tr id="<%= dom_id(music) %>">
+        <td><%= music.name %></td>
+        <td><%= music.performer %></td>
+        <td><%= music.lyricist %></td>
+        <td><%= music.composer %></td>
+        <td><%= music.arranger %></td>
+        <td><%= music.length %></td>
+        <td><%= link_to "Show", music %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('views.musics.index.new_button'), new_music_path %>

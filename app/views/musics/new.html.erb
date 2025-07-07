@@ -1,0 +1,11 @@
+<% content_for :title, "New music" %>
+
+<h1><%= t('views.musics.new.title') %></h1>
+
+<%= render "form", music: @music %>
+
+<br>
+
+<div>
+  <%= link_to t('views.musics.new.back_button'), musics_path %>
+</div>
