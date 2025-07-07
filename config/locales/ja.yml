@@ -1,0 +1,37 @@
+ja:
+  views:
+    musics:
+      index:
+        title: 楽曲一覧
+        new_button: 新規作成
+      new:
+        title: 新規作成
+        back_button: 楽曲一覧に戻る
+      edit:
+        title: 楽曲の編集
+        show_button: 楽曲情報に戻る
+        back_button: 楽曲一覧に戻る
+      show:
+        title: 楽曲情報
+        edit_button: 楽曲情報を編集する
+        back_button: 楽曲一覧に戻る
+        destroy_button: 楽曲情報を削除する
+  activerecord:
+    attributes:
+      music:
+        name: 楽曲名
+        performer: アーティスト
+        lyricist: 作詞
+        composer: 作曲
+        arranger: 編曲
+        length: 曲の長さ
+        description: 説明
+        details: 詳細
+    errors:
+      messages:
+        blank: "を入力してください。"
+        too_long: "は%{count}文字以内で入力してください。"
+  helpers:
+    submit:
+      create: 登録する
+      update: 更新する

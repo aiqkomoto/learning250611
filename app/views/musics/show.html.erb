@@ -3,8 +3,8 @@
 <%= render @music %>
 
 <div>
-  <%= link_to "Edit this music", edit_music_path(@music) %> |
-  <%= link_to "Back to musics", musics_path %>
+  <%= link_to t('views.musics.show.edit_button'), edit_music_path(@music) %> |
+  <%= link_to t('views.musics.show.back_button'), musics_path %>
 
-  <%= button_to "Destroy this music", @music, method: :delete %>
+  <%= button_to t('views.musics.show.destroy_button'), @music, method: :delete %>
 </div>

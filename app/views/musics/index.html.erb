@@ -2,18 +2,18 @@
 
 <% content_for :title, "Musics" %>
 
-<h1>楽曲情報</h1>
+<h1><%= t('views.musics.index.title') %></h1>
 
 <table border="1">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Performer</th>
-      <th>Lyricist</th>
-      <th>Composer</th>
-      <th>Arranger</th>
-      <th>Length</th>
-      <th>Action</th>
+      <th><%= Music.human_attribute_name(:name) %></th>
+      <th><%= Music.human_attribute_name(:performer) %></th>
+      <th><%= Music.human_attribute_name(:lyricist) %></th>
+      <th><%= Music.human_attribute_name(:composer) %></th>
+      <th><%= Music.human_attribute_name(:arranger) %></th>
+      <th><%= Music.human_attribute_name(:length) %></th>
+      <th><%= Music.human_attribute_name(:details) %></th>
     </tr>
   </thead>
   <tbody>
@@ -31,4 +31,4 @@
   </tbody>
 </table>
 
-<%= link_to "New music", new_music_path %>
+<%= link_to t('views.musics.index.new_button'), new_music_path %>
