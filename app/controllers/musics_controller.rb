@@ -3,7 +3,15 @@ class MusicsController < ApplicationController
 
   # GET /musics or /musics.json
   def index
-    @musics = Music.all
+    if params[:q].present?
+      keyword = "%#{params[:q]}%"
+      @musics = Music.where(
+        "name LIKE :kw OR performer LIKE :kw OR lyricist LIKE :kw OR composer LIKE :kw OR arranger LIKE :kw",
+        kw: keyword
+      )
+    else
+      @musics = Music.all
+    end
   end
 
   # GET /musics/1 or /musics/1.json
@@ -25,7 +33,7 @@ class MusicsController < ApplicationController
 
     respond_to do |format|
       if @music.save
-        format.html { redirect_to @music, notice: "Music was successfully created." }
+        format.html { redirect_to @music, notice: t('messages.created', model: Music.model_name.human) }
         format.json { render :show, status: :created, location: @music }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +46,7 @@ class MusicsController < ApplicationController
   def update
     respond_to do |format|
       if @music.update(music_params)
-        format.html { redirect_to @music, notice: "Music was successfully updated." }
+        format.html { redirect_to @music, notice: t('messages.updated', model: Music.model_name.human) }
         format.json { render :show, status: :ok, location: @music }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +60,7 @@ class MusicsController < ApplicationController
     @music.destroy!
 
     respond_to do |format|
-      format.html { redirect_to musics_path, status: :see_other, notice: "Music was successfully destroyed." }
+      format.html { redirect_to musics_path, status: :see_other, notice: t('messages.destroyed', model: Music.model_name.human) }
       format.json { head :no_content }
     end
   end
