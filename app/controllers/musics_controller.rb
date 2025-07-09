@@ -3,15 +3,10 @@ class MusicsController < ApplicationController
 
   # GET /musics or /musics.json
   def index
-    if params[:q].present?
-      keyword = "%#{params[:q]}%"
-      @musics = Music.where(
-        "name LIKE :kw OR performer LIKE :kw OR lyricist LIKE :kw OR composer LIKE :kw OR arranger LIKE :kw",
-        kw: keyword
-      )
-    else
-      @musics = Music.all
-    end
+    sort_column = %w[name performer lyricist composer arranger length].include?(params[:sort]) ? params[:sort] : 'name'
+    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    
+    @musics = Music.search_by_keyword(params[:keyword]).order("#{sort_column} #{sort_direction}")
   end
 
   # GET /musics/1 or /musics/1.json
