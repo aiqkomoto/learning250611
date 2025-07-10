@@ -6,7 +6,7 @@ ja:
         new_button: 新規作成
         search_label: キーワード検索
         search_button: 検索
-        search_reset: 検索リセット
+        search_reset: リセット
       new:
         title: 新規作成
         back_button: 楽曲一覧に戻る

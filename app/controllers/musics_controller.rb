@@ -3,9 +3,9 @@ class MusicsController < ApplicationController
 
   # GET /musics or /musics.json
   def index
-    sort_column = %w[name performer lyricist composer arranger length].include?(params[:sort]) ? params[:sort] : 'name'
-    sort_direction = %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
-    
+    sort_column = Music.valid_sort_column(params[:sort])
+    sort_direction = Music.valid_sort_direction(params[:direction])
+
     @musics = Music.search_by_keyword(params[:keyword]).order("#{sort_column} #{sort_direction}")
   end
 

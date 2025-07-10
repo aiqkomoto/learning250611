@@ -16,12 +16,30 @@
 <table border="1">
   <thead>
     <tr>
-      <th><%= sortable("name") %></th>
-      <th><%= sortable("performer") %></th>
-      <th><%= sortable("lyricist") %></th>
-      <th><%= sortable("composer") %></th>
-      <th><%= sortable("arranger") %></th>
-      <th><%= sortable("length") %></th>
+      <th>
+        <%= Music.human_attribute_name(:name) %>
+        <%= sortable_icon_button("name") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:performer) %>
+        <%= sortable_icon_button("performer") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:lyricist) %>
+        <%= sortable_icon_button("lyricist") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:composer) %>
+        <%= sortable_icon_button("composer") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:arranger) %>
+        <%= sortable_icon_button("arranger") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:length) %>
+        <%= sortable_icon_button("length") %>
+      </th>
       <th><%= Music.human_attribute_name(:details) %></th>
     </tr>
   </thead>

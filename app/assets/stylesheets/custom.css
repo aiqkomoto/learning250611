@@ -20,3 +20,10 @@
   object-fit: contain;
   display: block;
 }
+
+.sort-icon-button {
+  border: 1px solid #858585;
+  margin-left: 5px;
+  text-decoration: none;
+  color: inherit;
+}
