@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   get "about", to: "hello#about"
   get "counter", to: "counter#index"
   get "roshambo", to: "roshambo#index"
+
+  namespace :api do
+    namespace :v1 do
+      resources :users, only: [:create]
+    end
+  end
 end
