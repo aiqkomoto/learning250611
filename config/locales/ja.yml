@@ -4,6 +4,9 @@ ja:
       index:
         title: 楽曲一覧
         new_button: 新規作成
+        search_label: キーワード検索
+        search_button: 検索
+        search_reset: リセット
       new:
         title: 新規作成
         back_button: 楽曲一覧に戻る
@@ -35,3 +38,7 @@ ja:
     submit:
       create: 登録する
       update: 更新する
+  messages:
+    created: "楽曲情報が正常に登録されました。"
+    updated: "楽曲情報が更新されました。"
+    destroyed: "楽曲情報が削除されました。"

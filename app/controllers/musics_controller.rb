@@ -3,7 +3,10 @@ class MusicsController < ApplicationController
 
   # GET /musics or /musics.json
   def index
-    @musics = Music.all
+    sort_column = Music.valid_sort_column(params[:sort])
+    sort_direction = Music.valid_sort_direction(params[:direction])
+
+    @musics = Music.search_by_keyword(params[:keyword]).order("#{sort_column} #{sort_direction}")
   end
 
   # GET /musics/1 or /musics/1.json
@@ -25,7 +28,7 @@ class MusicsController < ApplicationController
 
     respond_to do |format|
       if @music.save
-        format.html { redirect_to @music, notice: "Music was successfully created." }
+        format.html { redirect_to @music, notice: t('messages.created', model: Music.model_name.human) }
         format.json { render :show, status: :created, location: @music }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class MusicsController < ApplicationController
   def update
     respond_to do |format|
       if @music.update(music_params)
-        format.html { redirect_to @music, notice: "Music was successfully updated." }
+        format.html { redirect_to @music, notice: t('messages.updated', model: Music.model_name.human) }
         format.json { render :show, status: :ok, location: @music }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +55,7 @@ class MusicsController < ApplicationController
     @music.destroy!
 
     respond_to do |format|
-      format.html { redirect_to musics_path, status: :see_other, notice: "Music was successfully destroyed." }
+      format.html { redirect_to musics_path, status: :see_other, notice: t('messages.destroyed', model: Music.model_name.human) }
       format.json { head :no_content }
     end
   end

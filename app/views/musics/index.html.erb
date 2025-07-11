@@ -4,15 +4,42 @@
 
 <h1><%= t('views.musics.index.title') %></h1>
 
+<%= form_with url: musics_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :keyword, t('views.musics.index.search_label') %>
+    <%= text_field_tag :keyword, params[:keyword] %>
+    <%= submit_tag t('views.musics.index.search_button') %>
+    <%= link_to t('views.musics.index.search_reset'), musics_path, class: "button" %>
+  </div>
+<% end %>
+
 <table border="1">
   <thead>
     <tr>
-      <th><%= Music.human_attribute_name(:name) %></th>
-      <th><%= Music.human_attribute_name(:performer) %></th>
-      <th><%= Music.human_attribute_name(:lyricist) %></th>
-      <th><%= Music.human_attribute_name(:composer) %></th>
-      <th><%= Music.human_attribute_name(:arranger) %></th>
-      <th><%= Music.human_attribute_name(:length) %></th>
+      <th>
+        <%= Music.human_attribute_name(:name) %>
+        <%= sortable_icon_button("name") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:performer) %>
+        <%= sortable_icon_button("performer") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:lyricist) %>
+        <%= sortable_icon_button("lyricist") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:composer) %>
+        <%= sortable_icon_button("composer") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:arranger) %>
+        <%= sortable_icon_button("arranger") %>
+      </th>
+      <th>
+        <%= Music.human_attribute_name(:length) %>
+        <%= sortable_icon_button("length") %>
+      </th>
       <th><%= Music.human_attribute_name(:details) %></th>
     </tr>
   </thead>
