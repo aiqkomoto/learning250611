@@ -1,0 +1,10 @@
+<!-- app/views/layouts/_header.html.erb -->
+<header>
+  <nav>
+    <%= link_to "ホーム", root_path %> |
+    <%= link_to "数取器", controller: "counter", action: "index" %> |
+    <%= link_to "じゃんけん", controller: "roshambo", action: "index" %> |
+    <%= link_to "楽曲リスト", controller: "musics", action: "index" %> |
+    <%= link_to "別のページへ", about_path %>
+  </nav>
+</header>
