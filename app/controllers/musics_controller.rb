@@ -1,5 +1,6 @@
 class MusicsController < ApplicationController
   before_action :set_music, only: %i[ show edit update destroy ]
+  before_action :authorize_user!, only: %i[ update destroy ]
 
   # GET /musics or /musics.json
   def index
@@ -24,7 +25,7 @@ class MusicsController < ApplicationController
 
   # POST /musics or /musics.json
   def create
-    @music = Music.new(music_params)
+    @music = current_user.musics.new(music_params)
 
     respond_to do |format|
       if @music.save
@@ -64,6 +65,16 @@ class MusicsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_music
       @music = Music.find(params.expect(:id))
+    end
+
+    def authorize_user!
+      if @music.user != current_user
+        redirect_to musics_path, alert: t('messages.unauthorized', model: Music.model_name.human)
+      end
+    end
+
+    def current_user
+      User.first
     end
 
     # Only allow a list of trusted parameters through.
