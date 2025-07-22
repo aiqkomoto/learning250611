@@ -1,5 +1,7 @@
 class Music < ApplicationRecord
-    validates :name, :performer, presence: true
+    belongs_to :user
+
+    validates :name, :performer, :user, presence: true
     validates :description, length: { maximum: 1000 }
 
     SORTABLE_COLUMNS = %w[name performer lyricist composer arranger length].freeze
@@ -14,6 +16,8 @@ class Music < ApplicationRecord
             all
         end
     }
+
+    scope :owned_by, ->(user) { where(user: user) }
 
     def self.valid_sort_column(column)
         SORTABLE_COLUMNS.include?(column) ? column : "name"

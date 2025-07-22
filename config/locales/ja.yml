@@ -30,6 +30,7 @@ ja:
         length: 曲の長さ
         description: 説明
         details: 詳細
+        user: 登録ユーザー
     errors:
       messages:
         blank: "を入力してください。"
@@ -42,3 +43,4 @@ ja:
     created: "楽曲情報が正常に登録されました。"
     updated: "楽曲情報が更新されました。"
     destroyed: "楽曲情報が削除されました。"
+    unauthorized: "%{model}に対する許可がありません"
