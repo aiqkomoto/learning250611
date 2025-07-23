@@ -8,3 +8,11 @@
 
   <%= button_to t('views.musics.show.destroy_button'), @music, method: :delete %>
 </div>
+
+<div>
+  <% if @music.likes.exists?(user: current_user) %>
+    <%= button_to "いいね解除", music_like_path(@music), method: :delete %>
+  <% else %>
+    <%= button_to "いいね", music_like_path(@music), method: :post %>
+  <% end %>
+</div>
