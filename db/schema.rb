@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_22_062231) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_24_001643) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "music_id", null: false
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_id"], name: "index_comments_on_music_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -48,6 +58,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_22_062231) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "musics"
+  add_foreign_key "comments", "users"
   add_foreign_key "likes", "musics"
   add_foreign_key "likes", "users"
   add_foreign_key "musics", "users"

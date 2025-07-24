@@ -26,5 +26,6 @@ Rails.application.routes.draw do
 
   resources :musics do
     resource :like, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 end
