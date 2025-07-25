@@ -8,3 +8,25 @@
 
   <%= button_to t('views.musics.show.destroy_button'), @music, method: :delete %>
 </div>
+
+<div>
+  <% if @music.likes.exists?(user: current_user) %>
+    <%= button_to "いいね解除", music_like_path(@music), method: :delete %>
+  <% else %>
+    <%= button_to "いいね", music_like_path(@music), method: :post %>
+  <% end %>
+</div>
+
+<h2>コメント一覧</h2>
+<% @music.comments.each do |comment| %>
+  <p><%= comment.user.name %>: <%= comment.content %></p>
+  <% if comment.user == current_user %>
+    <%= link_to "削除", [@music, comment], method: :delete, data: { confirm: "削除しますか？" } %>
+  <% end %>
+<% end %>
+
+<h3>コメントする</h3>
+<%= form_with model: [@music, Comment.new], local: true do |form| %>
+  <%= form.text_area :content %>
+  <%= form.submit "投稿" %>
+<% end %>

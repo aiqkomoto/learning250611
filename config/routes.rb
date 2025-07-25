@@ -23,4 +23,9 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
     end
   end
+
+  resources :musics do
+    resource :like, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
 end

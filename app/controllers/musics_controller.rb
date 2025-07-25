@@ -72,11 +72,7 @@ class MusicsController < ApplicationController
         redirect_to musics_path, alert: t('messages.unauthorized', model: Music.model_name.human)
       end
     end
-
-    def current_user
-      User.first
-    end
-
+    
     # Only allow a list of trusted parameters through.
     def music_params
       params.expect(music: [ :name, :performer, :lyricist, :composer, :arranger, :length, :description ])
