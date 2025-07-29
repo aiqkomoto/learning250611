@@ -32,4 +32,31 @@ RSpec.describe "Likes", type: :request do
       expect(response).to redirect_to(music_path(music))
     end
   end
+
+  describe "POST /musics/:music_id/like" do
+    context "まだいいねしていない場合" do
+      it "楽曲にいいねできる" do
+        expect {
+          post music_like_path(music)
+        }.to change(Like, :count).by(1)
+
+        expect(response).to redirect_to(music_path(music))
+      end
+    end
+
+    context "すでにいいねしている場合" do
+      before do
+        music.likes.create!(user: user)
+      end
+
+      it "重複したいいねはできない（バリデーション）" do
+        expect {
+          post music_like_path(music)
+        }.not_to change(Like, :count)
+
+        expect(response).to redirect_to(music_path(music))
+        follow_redirect!
+      end
+    end
+  end
 end
