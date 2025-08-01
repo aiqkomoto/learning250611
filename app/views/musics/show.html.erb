@@ -21,7 +21,7 @@
 <% @music.comments.each do |comment| %>
   <p><%= comment.user.name %>: <%= comment.content %></p>
   <% if comment.user == current_user %>
-    <%= link_to "削除", [@music, comment], method: :delete, data: { confirm: "削除しますか？" } %>
+    <%= button_to "削除", [@music, comment], method: :delete, data: { "turbo-confirm": "削除しますか？" } %>
   <% end %>
 <% end %>
 
