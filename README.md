@@ -1,24 +1,26 @@
-# README
+# ローカル環境構築手順
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## インストール必要項目
 
-Things you may want to cover:
+- Ruby ver.3.3.8  
+- Rails ver.8.0.2  
+- Git  
 
-* Ruby version
+## セットアップ手順
 
-* System dependencies
+```bash
+git clone https://github.com/aiqkomoto/learning250611.git
+cd learning250611
+bundle install
+rails db:setup
+rails db:migrate
+rails db:migrate RAILS_ENV=test  # RSpecテスト用マイグレーション
+rails c
+    User.create!(name: "test", email: "test@email.com")  # ユーザーデータ準備
+    exit
+rails s
+```
 
-* Configuration
+## ブラウザでアクセス
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+http://localhost:3000/
